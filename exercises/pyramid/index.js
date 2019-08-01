@@ -14,6 +14,32 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    let str = '#';
+    let count = 1;
+    while(count < n) {
+        str = '#' + str + '#';
+        count ++
+    }
+
+    let logging = (num) => {
+        if(num === 0) {
+            return;
+        }
+        let stair = n - num;
+        let spaces = '';
+        let spaceCount = 0;
+        while(spaceCount < stair) {
+            spaces += ' ';
+            spaceCount ++ 
+        }
+
+        let replacedStr = spaces + str.slice(n - num, n + num -1) + spaces;
+        logging(num - 1)
+        console.log(replacedStr)
+    }
+
+    logging(n);
+}
 
 module.exports = pyramid;
