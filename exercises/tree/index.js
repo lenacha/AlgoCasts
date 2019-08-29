@@ -38,17 +38,23 @@ class Tree {
     };
 
     traverseDF(fn) {
-        let helper = (node) => {
-            if(!node) {
-                return;
-            } else {
-                fn(node);
-                for(let nd of node.children) {
-                    helper(nd);
-                }
-            }
+        // let helper = (node) => {
+        //     if(!node) {
+        //         return;
+        //     } else {
+        //         fn(node);
+        //         for(let nd of node.children) {
+        //             helper(nd);
+        //         }
+        //     }
+        // }
+        // helper(this.root);
+        const arr = [this.root];
+        while(arr.length) {
+            let node = arr.shift();
+            arr.unshift(...node.children);
+            fn(node);
         }
-        helper(this.root);
     };
 }
 
